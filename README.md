@@ -1,1 +1,1 @@
-https://nagazine.github.io/test/
+https://nagazine.github.io/test/index.html
