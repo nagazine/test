@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>サンプル</title>
+    </head>
+    <body onload="init()">
+        <canvas id="first" width="500" height="500"></canvas>
+        <script>
+            var canvas = document.getElementById('first');
+            var ctx = canvas.getContext('2d');
+            function init(){
+                ctx.fillText('button1',400,400);
+                button(400,400,50,50);
+            }
+
+            function button(x,y,width,height){
+                //矩形を描画
+                ctx.rect(x, y, width, height);
+                ctx.stroke();
+	            //canvas内クリック時イベント
+                canvas.addEventListener('click', function(e){
+		            var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
+	                mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
+		            mouseY = e.clientY - button.top;
+                    //マウス位置がボタン内部にいればボタン押下時処理を実施
+                    if(x < mouseX && mouseX < x + width){
+                        if(y < mouseY && mouseY < y + height){
+                            alert("mouseX:"+mouseX+" mouseY:"+mouseY+"\n"
+                            +"e.clientX:"+e.clientX+" e.clientY:"+e.clientY);
+			            }
+		            }
+	            }, false);
+            }
+        </script>
+    </body>
+</html>
