@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>サンプル</title>
+    </head>
+    <body>
+        <script>
+            alert("test");
+            $.getJSON('test.json',(data) =>{
+            console.log('id=${data.id}');
+            alert('id=${data.id}');
+        });
+        </script>
+    </body>
+</html>
