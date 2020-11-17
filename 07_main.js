@@ -2,6 +2,11 @@
 // - global -------------------------------------------------------------------
 var screenCanvas, info,ctx;
 var num = 0;
+var el_console = document.getElementById('console')
+
+var updateConsole = function(console){
+    el_console.innerHTML = console;
+}
 
 //ローカルストレージからの読み込み
 if(window.localStorage){
@@ -68,6 +73,7 @@ function button(x,y,width,height){
     }, false);
     //canvas内クリック時イベント
     screenCanvas.addEventListener('click', function(e){
+        updateConsole('clickevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = e.clientY - button.top;
@@ -106,6 +112,7 @@ function button(x,y,width,height){
     },false);
     //touch版
     screenCanvas.addEventListener('touchstart',function(e){
+        updateConsole('touchdownevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         var original = e.originalEvent;
         mouseX = original.changedTouches[0].pageX - button.left;//canvasに対するクリック位置の相対値を取得
@@ -113,6 +120,7 @@ function button(x,y,width,height){
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
             if(y < mouseY && mouseY < y + height){
+                updateConsole('touchdownevent inrect');
                 ctx.fillStyle = 'red';
                 ctx.fill();
             }
