@@ -105,7 +105,7 @@ function button(x,y,width,height){
         }
     },false);
     //touch版
-    screenCanvas.addEventListener('touchdown',function(e){
+    screenCanvas.addEventListener('touchstart',function(e){
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = e.clientY - button.top;
