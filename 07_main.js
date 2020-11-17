@@ -47,6 +47,7 @@ function button(x,y,width,height){
         }
         ctx.fill();
     }, false);
+<<<<<<< HEAD
     //touch版
     screenCanvas.addEventListener('touchmove', function (e) {
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
@@ -66,6 +67,8 @@ function button(x,y,width,height){
         }
         ctx.fill();
     }, false);
+=======
+>>>>>>> ed00042322cbebda000e81a0566448cbfdc67509
     //canvas内クリック時イベント
     screenCanvas.addEventListener('click', function(e){
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
@@ -104,6 +107,7 @@ function button(x,y,width,height){
             }
         }
     },false);
+<<<<<<< HEAD
     //touch版
     screenCanvas.addEventListener('touchdown',function(e){
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
@@ -117,4 +121,6 @@ function button(x,y,width,height){
             }
         }
     },false);
+=======
+>>>>>>> ed00042322cbebda000e81a0566448cbfdc67509
 }
