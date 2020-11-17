@@ -107,8 +107,9 @@ function button(x,y,width,height){
     //touch版
     screenCanvas.addEventListener('touchstart',function(e){
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
-        mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
-        mouseY = e.clientY - button.top;
+        var original = e.originalEvent;
+        mouseX = original.changedTouches[0].pageX - button.left;//canvasに対するクリック位置の相対値を取得
+        mouseY = original.changedTouches[0].pageY - button.top;
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
             if(y < mouseY && mouseY < y + height){
