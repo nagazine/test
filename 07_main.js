@@ -132,13 +132,16 @@ function button(x,y,width,height){
         updateConsole('touchdownevent2');
         var original = e.originalEvent;
         updateConsole('touchdownevent3');
-        mouseX = original.changedTouches[0].pageX - button.left;//canvasに対するクリック位置の相対値を取得
-        mouseY = original.changedTouches[0].pageY - button.top;
+        var touchX = original.changedTouches[0].pageX;
+        var touchY = original.changedTouches[0].pageY;
+        updateXY1(touchX,touchY);
+        var touchXR = touchX - button.left;//canvasに対するクリック位置の相対値を取得
+        var touchYR = touchY - button.top;
         updateConsole('touchdownevent4');
-        updateXY2(mouseX,mouseY);
+        updateXY2(touchXR,touchYR);
         //マウス位置がボタン内部にいればボタン押下時処理を実施
-        if(x < mouseX && mouseX < x + width){
-            if(y < mouseY && mouseY < y + height){
+        if(x < touchXR && touchXR < x + width){
+            if(y < touchYR && touchYR < y + height){
                 updateConsole('touchdownevent inrect');
                 ctx.fillStyle = 'red';
                 ctx.fill();
