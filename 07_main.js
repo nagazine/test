@@ -132,12 +132,22 @@ function button(x,y,width,height){
         updateConsole('touchdownevent2');
         var original = e.originalEvent;
         updateConsole('touchdownevent3');
-        var touchX = original.changedTouches[0].pageX;
-        var touchY = original.changedTouches[0].pageY;
-        updateXY1(touchX,touchY);
+        
+        var touchX,touchY;
+        if(originalEvent.changedTouches){
+            updateConsole('touchdownevent41');
+            touchX = original.changedTouches[0].pageX;
+            touchY = original.changedTouches[0].pageY;    
+        }
+        else{
+            updateConsole('touchdownevent42');
+            touchX = e.pageX;
+            touchY = e.pageY;
+        }
+        updateXY2(touchX,touchY);
         var touchXR = touchX - button.left;//canvasに対するクリック位置の相対値を取得
         var touchYR = touchY - button.top;
-        updateConsole('touchdownevent4');
+        updateConsole('touchdownevent5');
         updateXY2(touchXR,touchYR);
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < touchXR && touchXR < x + width){
