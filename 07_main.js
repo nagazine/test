@@ -86,11 +86,11 @@ function button(x,y,width,height){
     }, false);
     //canvas内クリック時イベント
     screenCanvas.addEventListener('click', function(e){
-        updateConsole('clickevent');
+        //updateConsole('clickevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = e.clientY - button.top;
-        updateXY1(mouseX,mouseY);
+        //updateXY1(mouseX,mouseY);
 
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
