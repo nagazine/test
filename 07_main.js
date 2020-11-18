@@ -129,9 +129,12 @@ function button(x,y,width,height){
     screenCanvas.addEventListener('touchstart',function(e){
         updateConsole('touchdownevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
+        updateConsole('touchdownevent2');
         var original = e.originalEvent;
+        updateConsole('touchdownevent3');
         mouseX = original.changedTouches[0].pageX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = original.changedTouches[0].pageY - button.top;
+        updateConsole('touchdownevent4');
         updateXY2(mouseX,mouseY);
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
