@@ -2,10 +2,23 @@
 // - global -------------------------------------------------------------------
 var screenCanvas, info,ctx;
 var num = 0;
-var el_console = document.getElementById('console')
+
+var el_console = document.getElementById('console');
+var el_x1 = document.getElementById('x1');
+var el_y1 = document.getElementById('y1');
+var el_x2 = document.getElementById('x2');
+var el_y2 = document.getElementById('y2');
 
 var updateConsole = function(console){
     el_console.innerHTML = console;
+}
+var updateXY1 = function(x,y){
+    el_x1.innerHTML = x;
+    el_y1.innerHTML = y; 
+}
+var updateXY2 = function(x,y){
+    el_x2.innerHTML = x;
+    el_y2.innerHTML = y; 
 }
 
 //ローカルストレージからの読み込み
@@ -77,6 +90,8 @@ function button(x,y,width,height){
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         mouseX = e.clientX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = e.clientY - button.top;
+        updateXY1(mouseX,mouseY);
+
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
             if(y < mouseY && mouseY < y + height){
@@ -117,6 +132,7 @@ function button(x,y,width,height){
         var original = e.originalEvent;
         mouseX = original.changedTouches[0].pageX - button.left;//canvasに対するクリック位置の相対値を取得
         mouseY = original.changedTouches[0].pageY - button.top;
+        updateXY2(mouseX,mouseY);
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < mouseX && mouseX < x + width){
             if(y < mouseY && mouseY < y + height){
