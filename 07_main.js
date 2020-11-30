@@ -169,3 +169,5 @@ function button(x,y,width,height){
         }
     },false);
 }
+
+document.addEventListener("DOMContentLoaded",window.onload);
