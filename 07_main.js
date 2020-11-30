@@ -134,7 +134,7 @@ function button(x,y,width,height){
         updateConsole('touchdownevent3');
         
         var touchX,touchY;
-        if(originalEvent.changedTouches){
+        if(original.changedTouches){
             updateConsole('touchdownevent41');
             touchX = original.changedTouches[0].pageX;
             touchY = original.changedTouches[0].pageY;    
