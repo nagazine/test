@@ -130,20 +130,30 @@ function button(x,y,width,height){
         updateConsole('touchdownevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
         updateConsole('touchdownevent2');
-        var original = e.originalEvent;
+
+        // var original = e.originalEvent;
+
+        e.preventDefault();
         updateConsole('touchdownevent3');
         
+        var touches = e.changedTouches;
+
         var touchX,touchY;
-        if(original.changedTouches){
-            updateConsole('touchdownevent41');
-            touchX = original.changedTouches[0].pageX;
-            touchY = original.changedTouches[0].pageY;    
-        }
-        else{
-            updateConsole('touchdownevent42');
-            touchX = e.pageX;
-            touchY = e.pageY;
-        }
+
+        touchX = touches[0].pageX;
+        touchY = touches[0].pageY;
+        updateConsole('touchdownevent4');
+
+        // if(original.changedTouches){
+        //     updateConsole('touchdownevent41');
+        //     touchX = original.changedTouches[0].pageX;
+        //     touchY = original.changedTouches[0].pageY;    
+        // }
+        // else{
+        //     updateConsole('touchdownevent42');
+        //     touchX = e.pageX;
+        //     touchY = e.pageY;
+        // }
         updateXY2(touchX,touchY);
         var touchXR = touchX - button.left;//canvasに対するクリック位置の相対値を取得
         var touchYR = touchY - button.top;
