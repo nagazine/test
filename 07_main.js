@@ -125,45 +125,45 @@ function button(x,y,width,height){
             }
         }
     },false);
-    //touch版
+    //touchstart時イベント
     screenCanvas.addEventListener('touchstart',function(e){
-        updateConsole('touchdownevent');
+        updateConsole('touchstartevent');
         var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
-        updateConsole('touchdownevent2');
-
-        // var original = e.originalEvent;
-
         e.preventDefault();
-        updateConsole('touchdownevent3');
-        
         var touches = e.changedTouches;
-
         var touchX,touchY;
-
         touchX = touches[0].pageX;
         touchY = touches[0].pageY;
-        updateConsole('touchdownevent4');
-
-        // if(original.changedTouches){
-        //     updateConsole('touchdownevent41');
-        //     touchX = original.changedTouches[0].pageX;
-        //     touchY = original.changedTouches[0].pageY;    
-        // }
-        // else{
-        //     updateConsole('touchdownevent42');
-        //     touchX = e.pageX;
-        //     touchY = e.pageY;
-        // }
-        updateXY2(touchX,touchY);
         var touchXR = touchX - button.left;//canvasに対するクリック位置の相対値を取得
         var touchYR = touchY - button.top;
-        updateConsole('touchdownevent5');
-        updateXY2(touchXR,touchYR);
         //マウス位置がボタン内部にいればボタン押下時処理を実施
         if(x < touchXR && touchXR < x + width){
             if(y < touchYR && touchYR < y + height){
-                updateConsole('touchdownevent inrect');
                 ctx.fillStyle = 'red';
+                ctx.fill();
+            }
+        }
+    },false);
+    //touchend時イベント
+    screenCanvas.addEventListener('touchend',function(e){
+        updateConsole('touchendevent');
+        var button = e.target.getBoundingClientRect();//canvasの矩形サイズ取得
+        e.preventDefault();
+        var touches = e.changedTouches;
+        var touchX,touchY;
+        touchX = touches[0].pageX;
+        touchY = touches[0].pageY;
+        var touchXR = touchX - button.left;//canvasに対するクリック位置の相対値を取得
+        var touchYR = touchY - button.top;
+        //マウス位置がボタン内部にいればボタン押下時処理を実施
+        if(x < touchXR && touchXR < x + width){
+            if(y < touchYR && touchYR < y + height){
+                ctx.fillStyle = 'black';//文字色　黒
+                ctx.fill();
+                ctx.clearRect(90,90,110,110);//指定範囲のcanvas表示クリア
+                num++;
+                ctx.fillText(num,100,100)//カウンタ数値を表示
+                ctx.fillStyle = 'white';//ボタン色 白
                 ctx.fill();
             }
         }
