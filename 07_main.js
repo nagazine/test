@@ -170,4 +170,5 @@ function button(x,y,width,height){
     },false);
 }
 
-document.addEventListener("DOMContentLoaded",window.onload);
+//DOMツリーの読み込み　これをしないとタッチイベントが走らない
+document.addEventListener("DOMContentLoaded");
